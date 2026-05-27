@@ -8,10 +8,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-    /* ANIMATION BASE */
+/* ================== COSMIC BACKGROUND ================== */
+body {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: radial-gradient(circle at 20% 20%, #1a1a3a 0%, transparent 40%),
+                radial-gradient(circle at 80% 30%, #2b1b4d 0%, transparent 45%),
+                radial-gradient(circle at 50% 80%, #0b1d3a 0%, transparent 50%),
+                #05060f;
+}
 
-    @media (max-width: 600px) {
+/* stars */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 80px 80px, 120px 120px;
+    background-position: 0 0, 40px 60px;
+    opacity: 0.15;
+    z-index: -2;
+}
 
+/* floating planets */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 15% 30%, rgba(255, 200, 100, 0.15), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(100, 180, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 60% 20%, rgba(255, 100, 200, 0.10), transparent 35%);
+    z-index: -1;
+}
+
+/* ================== GLASS STYLE ================== */
+header,
+table,
+.panel,
+.contact-box,
+.accordion {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 30px rgba(120, 120, 255, 0.15);
+}
+
+/* ================== ANIMATION BASE ================== */
+
+@media (max-width: 600px) {
     table {
         transform: scale(0.85);
         transform-origin: top center;
@@ -21,17 +77,12 @@
         font-size: 11px;
         padding: 6px;
     }
-
 }
-
-
 
 .fade{
     opacity:0;
     transform:translateY(40px);
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+    transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .fade.visible{
@@ -39,165 +90,51 @@
     transform:translateY(0);
 }
 
-/* HEADER ANIMATION */
-header {
-    animation: slideDown 0.8s ease;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* TITLE GLOW */
-.main-title {
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #aaa;
-    }
-    to {
-        text-shadow: 0 0 20px #fff, 0 0 40px #888;
-    }
-}
-
-/* TELEGRAM BUTTON */
-.telegram-btn {
-    position: relative;
-    overflow: hidden;
-    transition: 0.3s;
-}
-
-.telegram-btn::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: 0.5s;
-}
-
-.telegram-btn:hover::after {
-    left: 100%;
-}
-
-.telegram-btn:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 20px #229ED9;
-}
-
-/* TABLE ROW HOVER */
-tr {
-    transition: 0.3s;
-}
-
-tr:hover {
-    background: rgba(255,255,255,0.15);
-    transform: scale(1.02);
-}
-
-/* CONTACT BOX */
-.contact-box {
-    transition: 0.3s;
-}
-
-.contact-box:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 15px rgba(255,255,255,0.3);
-}
-
-/* PAGE LOAD FADE */
-body {
-    animation: pageFade 1s ease;
-}
-
-@keyframes pageFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    scroll-behavior: smooth;
-}
-
-body {
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa') no-repeat center/cover;
-}
-
 /* HEADER */
 header {
+    animation: slideDown 0.8s ease;
     position: fixed;
     width: 100%;
     top: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
     text-align: center;
     padding: 10px;
     z-index: 1000;
 }
 
-header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 22px;
-    margin-bottom: 5px;
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-nav a {
-    margin: 5px 10px;
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-}
-
-/* SECTIONS */
-section {
-    padding: 100px 15px 50px;
-    text-align: center;
-}
-
-/* MAIN TITLE */
+/* TITLE */
 .main-title {
+    animation: glow 2s infinite alternate;
     font-family: 'Orbitron', sans-serif;
     font-size: 32px;
-    margin-bottom: 20px;
-    margin-top: 30px;
-    color:white;
-    text-shadow: 2px 2px 6px rgba(255,255,255,0.8);
+    margin: 30px 0 20px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
-/* TELEGRAM BUTTON */
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #aaa; }
+    to { text-shadow: 0 0 25px #fff, 0 0 45px #888; }
+}
+
+/* BUTTON */
 .telegram-btn {
     display: inline-block;
     padding: 12px 25px;
-    background: #229ED9;
-    border-radius: 10px;
+    background: rgba(34, 158, 217, 0.8);
+    border-radius: 12px;
     color: white;
     text-decoration: none;
-    font-size: 16px;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.telegram-btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px #229ED9;
 }
 
 /* TABLE */
@@ -211,8 +148,7 @@ table {
     min-width: 500px;
     margin: 20px auto;
     border-collapse: collapse;
-    background: rgba(50,50,50,0.9);
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
 }
 
@@ -222,154 +158,94 @@ th, td {
 }
 
 th {
-    background: #2a2a2a;
+    background: rgba(255,255,255,0.12);
 }
 
-/* CONTACTS */
-.contacts {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+/* ROW HOVER */
+tr {
+    transition: 0.3s;
 }
 
+tr:hover {
+    background: rgba(255,255,255,0.12);
+    transform: scale(1.01);
+}
+
+/* CONTACT */
 .contact-box {
-    background: rgba(0,0,0,0.7);
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 14px;
+    transition: 0.3s;
 }
 
-/* ANIMATION */
-.fade {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 1s;
+.contact-box:hover {
+    transform: translateY(-5px) scale(1.05);
 }
 
-.fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-a{
-    text-decoration: none;
-    color: white;
-}
-
-/* 📱 АДАПТИВ */
-@media (max-width: 600px) {
-
-    header h1 {
-        font-size: 18px;
-    }
-
-    .main-title {
-        font-size: 26px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    .telegram-btn {
-        width: 90%;
-        display: block;
-        margin: auto;
-    }
-
-    th, td {
-        font-size: 12px;
-        padding: 8px;
-    }
-
-}
-
+/* ACCORDION */
 .accordion {
-    background: rgba(50,50,50,0.8);
     color: white;
     cursor: pointer;
     padding: 12px 20px;
     width: 90%;
     max-width: 800px;
     margin: 15px auto;
-    border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: left;
     font-size: 16px;
     transition: 0.3s;
 }
 
 .accordion:hover {
-    background: rgba(70,70,70,0.9);
+    background: rgba(255,255,255,0.12);
 }
 
 .panel {
-    background: rgba(0,0,0,0.6);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
-    border-radius: 10px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 0 20px;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 800px;
 }
 
-.panel ol, .panel ul {
-    margin: 10px 0 15px 20px;
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.panel {
-    background: rgba(0,0,0,0.6);
-    border-radius: 10px;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 800px;
-    padding: 10px 20px; /* немного внутреннего отступа */
+html { scroll-behavior: smooth; }
+
+section {
+    padding: 100px 15px 50px;
+    text-align: center;
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
-    .main-title {
-        animation: none;
-        text-shadow: 2px 2px 6px rgba(255,255,255,0.8);
-    }
+    header h1 { font-size: 18px; }
+    .main-title { font-size: 26px; }
+    th, td { font-size: 12px; }
 }
 
-@media (hover: none) {
-    .telegram-btn:hover,
-    tr:hover,
-    .contact-box:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
-    .telegram-btn::after {
-        display: none;
-    }
-}
-
-@media (max-width: 600px) {
-    .fade {
-        transition: none;
-        transform: none;
-        opacity: 1 !important;
-    }
-}
-
+/* FOOTER + 43 */
 footer {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.4);
     backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 10px;
 }
-
 </style>
 </head>
 
 <body>
 
-<header>
-
-</header>
+<header></header>
 
 <section class="fade">
     <h1 class="main-title">Астрономическая Лига</h1>
@@ -404,7 +280,7 @@ footer {
 
             <tr><td>Стас</td><td>Беларусь</td><td>117.225</td><td>0</td><td>0</td></tr>
             <tr><td>Артем</td><td>Украина</td><td>37.295</td><td>100</td><td>0</td></tr>
-            <tr><td>Влад Тударан</td><td>Украина</td><td>29.900</td><td>260</td><td>х4 активировано на 2д.</td></tr>
+            <tr><td>Влад Тударан</td><td>Украина</td><td>29.900</td><td>260</td><td>х4 активировано на 3д.</td></tr>
             <tr><td>Бодя</td><td>Украина</td><td>20.774</td><td>0</td><td>0</td></tr>
             <tr><td>Mayja (Виталик)</td><td>Украина</td><td>10.900</td><td>0</td><td>0</td></tr>
             <tr><td>Lukin Anton</td><td>Украина</td><td>10.800</td><td>0</td><td>0</td></tr>
@@ -573,7 +449,6 @@ window.addEventListener('scroll', () => {
 const accordions = document.querySelectorAll(".accordion");
 accordions.forEach(acc => {
   acc.addEventListener("click", () => {
-    acc.classList.toggle("active");
     const panel = acc.nextElementSibling;
     if(panel.style.maxHeight){
       panel.style.maxHeight = null;
