@@ -26,15 +26,17 @@
 
 
 
-.fade {
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
-    transition: 0.8s ease;
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
-.fade.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+.fade.visible{
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* HEADER ANIMATION */
@@ -372,6 +374,7 @@ footer {
 <section class="fade">
     <h1 class="main-title">Астрономическая Лига</h1>
 </section>
+
 <section class="fade">
   <h2>🏆 ПРИЗЫ</h2>
 
@@ -396,17 +399,18 @@ footer {
                 <th>Страна</th>
                 <th>Рэнды</th>
                 <th>Астроны</th>
+                <th>Активированные бусты</th>
             </tr>
 
-            <tr><td>Стас</td><td>Беларусь</td><td>3000</td><td>0</td></tr>
-            <tr><td>Влад Тударан</td><td>Украина</td><td>420</td><td>20</td></tr>
-            <tr><td>Мауja (Виталик)</td><td>Украина</td><td>355</td><td>0</td></tr>
-            <tr><td>Артём</td><td>Украина</td><td>275</td><td>0</td></tr>
-            <tr><td>Саша</td><td>Украина</td><td>110</td><td>0</td></tr>
-            <tr><td>Максим Марче</td><td>Украина</td><td>100</td><td>0</td></tr>
-            <tr><td>Lukin Anton</td><td>Россия</td><td>70</td><td>0</td></tr>
-            <tr><td>Бодя Битбоксер</td><td>Украина</td><td>35</td><td>0</td></tr>
-            <tr><td>Юра</td><td>Германия</td><td>0</td><td>0</td></tr>
+            <tr><td>Стас</td><td>Беларусь</td><td>117.225</td><td>0</td><td>0</td></tr>
+            <tr><td>Артем</td><td>Украина</td><td>37.295</td><td>100</td><td>0</td></tr>
+            <tr><td>Влад Тударан</td><td>Украина</td><td>29.900</td><td>260</td><td>х4 активировано на 3д.</td></tr>
+            <tr><td>Бодя</td><td>Украина</td><td>20.774</td><td>0</td><td>0</td></tr>
+            <tr><td>Mayja (Виталик)</td><td>Украина</td><td>10.900</td><td>0</td><td>0</td></tr>
+            <tr><td>Lukin Anton</td><td>Украина</td><td>10.800</td><td>0</td><td>0</td></tr>
+            <tr><td>Максим Марче</td><td>Россия</td><td>3.765</td><td>0</td><td>0</td></tr>
+            <tr><td>Саша</td><td>Украина</td><td>2.445</td><td>0</td><td>0</td></tr>
+            <tr><td>Юра</td><td>Германия</td><td>2.345</td><td>0</td><td>0</td></tr>
         </table>
     </div>
 </section>
